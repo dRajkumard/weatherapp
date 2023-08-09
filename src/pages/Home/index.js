@@ -1,40 +1,66 @@
 import React, { useState } from "react";
 import { Button, Card, Input, Space } from "antd";
-import { fetchWeatherData } from "../../components/apicall";
+import {  fetchWeatherDatabylocation, fetchWeatherDatabyname } from "../../components/apicall";
 import "./index.css";
 import { useNavigate,Link } from "react-router-dom"; 
 const Home = () => {
   const navigate = useNavigate(); 
   const { Search } = Input;
-  
-  const [weatherData, setWeatherData] = useState(null);
-console.log("data",weatherData)
-  const onSearch = async (value) => {
-    const data = await fetchWeatherData(value);
-    setWeatherData(data);
+
+const onSearch = async (value) => {
+  try {
+    const data = await fetchWeatherDatabyname(value);
+    console.log("API Data:", data); // Log the API data
+ 
     if (data) {
-      navigate("/weather", { state: { weatherData } });
+      navigate("/weather", { state: { data } });
     }
-  };
+  } catch (error) {
+    console.error("Error fetching weather data:", error);
+  }
+};
+
+
+const toggleGetGeolocation = () => {
+navigator.geolocation.getCurrentPosition(
+// GetgeoLocation
+
+async(position) => {
+  console.log("pos",position);
+// Capture user's geolocation
+const { latitude, longitude } = position.coords;
+const data = await fetchWeatherDatabylocation(latitude,longitude);
+console.log("lat",data);
+if (data) {
+  navigate("/weather", { state: { data } });
+}
+
+},
+(error) => {
+console.error("Error getting geolocation:", error);
+}
+);
+};
+
   return (
     <div className="home">
       <div className="row justify-content-center align-items-center h-100">
-        <div className="col-3">
+       
           <Card
             title="Weather App"
             bordered={false}
             className="card-title"
-            
+            style={{ width: 300 }}
           >
          
             <div className="text-center">
-              {/* <Space direction="vertical"> */}
+           
               <Search
                 placeholder="Enter city name"
                 onSearch={onSearch}
-                style={{
-                  width: 300,
-                }}
+                // style={{
+                //   width: 300,
+                // }}
               />
               {/* </Space> */}
             </div>
@@ -43,19 +69,20 @@ console.log("data",weatherData)
               <div className="horizontal-line-text">or</div>
             </div>
             <div className="text-center">
-            <Link
+            {/* <Link
                 to={{
                   pathname: "/weather",
                   state: { weatherData }, // Pass weatherData as state
                 }}
-              >
-                <Button type="primary" className="location_button">
+              > */}
+                <Button type="primary" className="location_button" onClick={toggleGetGeolocation}>
                   Get Device Location
                 </Button>
-              </Link>            </div>
+              {/* </Link>          */}
+                 </div>
           </Card>
         </div>
-      </div>
+    
     </div>
   );
 };
