@@ -1,0 +1,34 @@
+.home{
+    width: 100vw;
+    height: 100vh;
+  background: rgb(80, 182, 223);
+}
+.card-title .ant-card-head-title{
+    color:rgb(80, 182, 223);
+}
+/* index.css */
+.horizontal-line-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .horizontal-line-text {
+    position: absolute;
+    background-color: white;
+    padding: 0 10px;
+    font-size: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  .location_button{
+        width: 300;
+        background-color: rgb(80, 182, 223);
+        border-color: rgb(80, 182, 223);
+        font-weight:bold;
+     
+  }
+  
+  
