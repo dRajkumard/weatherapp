@@ -1,23 +1,15 @@
-import React, { useState } from "react";
-import { Button, Card, Input, Space, Typography, Row, Col } from "antd";
-import { fetchWeatherData } from "../../components/apicall";
+import React from "react";
+import { Card, Typography, Row, Col } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { getName } from "country-list";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faTemperature1,
-  faThermometerHalf,
-  faHumidity,
-  faHeader,
-  faCloudRain,
-  faLocation,
   faLocationDot,
   faDroplet,
-  faThermometer4,
   faTemperatureHigh,
-} from "@fortawesome/free-solid-svg-icons"; // Import icons
+} from "@fortawesome/free-solid-svg-icons";
 import "./index.css";
 const { Title } = Typography;
 const WeatherDisplay = () => {
@@ -50,13 +42,13 @@ const WeatherDisplay = () => {
   return (
     <div className="home">
       <div className="row justify-content-center align-items-center h-100">
-        {/* <div className="col-3"> */}
         <Card
           title={
             <div className="card-header">
               <ArrowLeftOutlined
                 onClick={goBack}
                 style={{ cursor: "pointer", fontWeight: 900 }}
+                className="bold-arrow"
               />
               <Title level={4}>Weather App</Title>
             </div>
@@ -76,31 +68,32 @@ const WeatherDisplay = () => {
                 {state.data.name}, {countryName}
               </p>
             </div>
-            
-            <Row className="bottom">
 
+            <Row className="bottom">
               <Col md={12} className="bottom_right bottom_details">
-              <FontAwesomeIcon
-                    className="custom-icon "
-                    icon={faTemperatureHigh}
-                    size="2x"
-                  />
+                <FontAwesomeIcon
+                  className="custom-icon "
+                  icon={faTemperatureHigh}
+                  size="2x"
+                />
                 <p>
-                 
-                  {feels_like_celsius.toFixed(2)}°C
+                  <span className="bottom_description">
+                    {feels_like_celsius.toFixed(2)}°C
+                  </span>
                   <br />
                   Feels like
                 </p>
               </Col>
-              <Col md={12} className=" bottom_details">
-              <FontAwesomeIcon
-                    className="custom-icon "
-                    icon={faDroplet}
-                    size="2x"
-                  />
+              <Col md={12} className="bottom_right bottom_details">
+                <FontAwesomeIcon
+                  className="custom-icon "
+                  icon={faDroplet}
+                  size="2x"
+                />
                 <p>
-                  
-                  {state.data.main.humidity}%
+                  <span className="bottom_description">
+                    {state.data.main.humidity}%
+                  </span>
                   <br />
                   Humidity
                 </p>

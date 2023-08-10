@@ -9,9 +9,10 @@
   .card-header .ant-typography{
     color:rgb(80, 182, 223);
   }
-  /* :where(.css-dev-only-do-not-override-fpg3f5).ant-card .ant-card-body{
-    padding: 0;
-  } */
+  .row>*{
+    padding: 0px 0px !important;
+
+  }
   .card-header .anticon {
     margin-right: 8px;
     padding-bottom:8px;
@@ -33,21 +34,40 @@ font-weight: bold;
     font-size: 16px;
   }
   .custom-icon {
+    padding: 8px;
     color:rgb(80, 182, 223);
    
   }
   .bottom{
+    width: 300px;
     border-top: 1px solid rgb(228, 215, 215);
+    margin-left: -24px; 
+   
   }
   .bottom_right{
     border-right: 1px solid rgb(216, 209, 209);
+    height: 77px;
+    margin-bottom: -20px;
+
    
   }
   .bottom_details{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 10px;
+    width: 150px;
+    
   }
   .bottom_details p{
     margin-bottom: 0;
   }
+  .bottom_description{
+    font-size: 16px;
+    font-weight: bold;
+  }
+  :where(.css-dev-only-do-not-override-fpg3f5).ant-card .ant-card-head{
+    border-bottom: 1px solid rgb(224, 210, 210) !important;
+  }
+  
+  

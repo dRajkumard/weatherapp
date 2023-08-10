@@ -28,7 +28,14 @@
         background-color: rgb(80, 182, 223);
         border-color: rgb(80, 182, 223);
         font-weight:bold;
+        padding: 5px 58px;
      
   }
-  
-  
+  .searchfield{
+    padding-left: 70px;
+  }
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
