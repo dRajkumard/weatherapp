@@ -60,7 +60,7 @@ The application uses the [OpenWeatherMap API](https://openweathermap.org/api) to
 6. Input a location in the form and submit to see weather information.
 
 ## Live Demo
-A live demo of the Weather App is available at Demo Link. Visit the link [Click here]([https://drajkumard.github.io/weatherapp/])
+A live demo of the Weather App is available at Demo Link. Visit the link [Click here](https://drajkumard.github.io/weatherapp/)
 to experience the application in action and explore its features.
 
 ## Contributors
